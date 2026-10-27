@@ -7,12 +7,10 @@
   /* Brand Color Tokens */
   --navy-deep: #0A192F;
   --navy-card: #112240;
-  --navy-light: #1D3557;
   --gold-primary: #D4AF37;
   --gold-hover: #E5C158;
   --gold-muted: rgba(212, 175, 55, 0.15);
-  --crimson-accent: #8B0000;
-  
+
   /* Neutral Color Tokens */
   --bg-canvas: #0A192F;
   --surface-elevated: #112240;
@@ -20,8 +18,7 @@
   --text-muted: #94A3B8;
   --text-dim: #64748B;
   --border-subtle: #233554;
-  --border-highlight: #334155;
-  
+
   /* Typography Tokens */
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -38,7 +35,6 @@
   --shadow-hover: 0 20px 35px -10px rgba(212, 175, 55, 0.2);
 }
 
-/* Light Mode / High-Contrast Fallback Support */
 @media (prefers-contrast: more) {
   :root {
     --text-muted: #E2E8F0;
@@ -1352,4 +1348,80 @@ a:hover {
     gap: 1rem;
     text-align: center;
   }
+}
+
+.case-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.case-panel,
+.case-snippet {
+  background: var(--navy-deep);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+}
+
+.case-panel {
+  padding: 1rem;
+}
+
+.case-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+}
+
+.case-panel p {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.case-subhead {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.case-hooks {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  list-style: none;
+}
+
+.case-hooks li {
+  position: relative;
+  margin-bottom: 0.4rem;
+  padding-left: 1rem;
+}
+
+.case-mark {
+  position: absolute;
+  left: 0;
+  color: var(--gold-primary);
+}
+
+.case-snippet {
+  padding: 1.25rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+}
+
+.case-results {
+  padding: 1rem;
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--radius-sm);
+  background: rgb(from var(--gold-primary) r g b / 0.1);
+  text-align: center;
+}
+
+.case-results strong {
+  color: var(--gold-primary);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
 }

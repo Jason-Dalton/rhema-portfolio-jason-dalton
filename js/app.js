@@ -1,9 +1,3 @@
-/**
- * Jason Dalton — Rhema Bible Church Portfolio Controller
- * Lightweight Vanilla ES6+ Engine
- * WCAG Compliant Keyboard Handlers, Modal Engine, and Interactive Simulators
- */
-
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initCampaignTabs();
@@ -12,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
 });
 
-/* 1. Accessible Mobile Menu Navigation */
 function initMobileMenu() {
   const toggleBtn = document.getElementById('mobileMenuToggle');
   const nav = document.querySelector('.site-nav');
@@ -35,7 +28,6 @@ function initMobileMenu() {
   });
 }
 
-/* 2. Dynamic Campaign Filter Tabs */
 function initCampaignTabs() {
   const tabs = document.querySelectorAll('.tab-btn');
   const cards = document.querySelectorAll('.campaign-card');
@@ -66,7 +58,6 @@ function initCampaignTabs() {
   });
 }
 
-/* 3. Modal Lightbox System for Case Study Breakdowns */
 const caseStudyData = {
   'modal-case-1': {
     title: 'Case 01: "Rooted & Grounded" Sermon Series Promotion',
@@ -135,23 +126,19 @@ function initCaseModals() {
 
       modalBody.innerHTML = `
         <span class="section-kicker">${data.platform}</span>
-        <h2 id="modalTitle" style="font-family: var(--font-serif); font-size: 1.8rem; margin: 0.5rem 0 1rem 0;">${data.title}</h2>
-        
-        <div style="background: var(--navy-deep); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
-          <strong style="color: var(--gold-primary); font-size: 0.85rem; display: block; margin-bottom: 0.25rem;">ADOBE CC WORKFLOW ENGINE:</strong>
-          <p style="font-size: 0.9rem; margin: 0; color: var(--text-main);">${data.adobeWorkflow}</p>
+        <h2 id="modalTitle" class="case-title">${data.title}</h2>
+        <div class="case-panel">
+          <strong class="case-label">ADOBE CC WORKFLOW ENGINE:</strong>
+          <p>${data.adobeWorkflow}</p>
         </div>
-
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Strategic Hook Variants:</h3>
-        <ul style="list-style: none; margin-bottom: 1.5rem; font-size: 0.9rem;">
-          ${data.hookVariants.map(h => `<li style="margin-bottom: 0.4rem; padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-primary);">➔</span> ${h}</li>`).join('')}
+        <h3 class="case-subhead">Strategic Hook Variants:</h3>
+        <ul class="case-hooks">
+          ${data.hookVariants.map(h => `<li><span class="case-mark">➔</span> ${h}</li>`).join('')}
         </ul>
-
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Primary Post Copy Execution:</h3>
-        <pre style="background: var(--navy-deep); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-family: var(--font-sans); white-space: pre-wrap; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">${data.copySnippet}</pre>
-
-        <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold-primary); padding: 1rem; border-radius: var(--radius-sm); text-align: center;">
-          <strong style="color: var(--gold-primary); font-family: var(--font-mono); font-size: 0.95rem;">VERIFIED RESULTS: ${data.metrics}</strong>
+        <h3 class="case-subhead">Primary Post Copy Execution:</h3>
+        <pre class="case-snippet">${data.copySnippet}</pre>
+        <div class="case-results">
+          <strong>VERIFIED RESULTS: ${data.metrics}</strong>
         </div>
       `;
 
@@ -181,7 +168,6 @@ function initCaseModals() {
   });
 }
 
-/* 4. Interactive 9:16 Reel Simulator */
 function initReelSimulator() {
   const likeBtn = document.getElementById('simLikeBtn');
   const countSpan = document.getElementById('simLikeCount');
@@ -214,7 +200,6 @@ function initReelSimulator() {
   }
 }
 
-/* 5. Contact Form Validation & Submission Handler */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const feedback = document.getElementById('formFeedback');
@@ -227,21 +212,11 @@ function initContactForm() {
     const email = form.senderEmail.value.trim();
     const message = form.senderMessage.value.trim();
 
-    // Validate inputs
-    if (!name || !email || !message) {
-      feedback.textContent = 'Please complete all fields before sending.';
-      feedback.className = 'form-feedback error';
-      return;
-    }
-
-    // Format the email subject and body
     const subject = encodeURIComponent(`Interview Request from ${name}`);
     const body = encodeURIComponent(`${message}\n\nContact Email: ${email}`);
 
-    // Trigger the native mail client using your email address
     window.location.href = `mailto:jason.nv.dalton@outlook.com?subject=${subject}&body=${body}`;
 
-    // Update the UI to show success
     feedback.textContent = `Thank you, ${name}! Opening your mail client...`;
     feedback.className = 'form-feedback success';
     form.reset();
