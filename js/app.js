@@ -44,11 +44,9 @@ function initCampaignTabs() {
     tab.addEventListener('click', () => {
       tabs.forEach(t => {
         t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
       });
 
       tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
 
       const targetCategory = tab.id.replace('tab-', '');
 
